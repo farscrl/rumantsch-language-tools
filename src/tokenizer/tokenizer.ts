@@ -99,9 +99,9 @@ function tokenize(stringToTokenize: string, keepPunctuation = false, keepWhitesp
   }
 
   if (keepWhitespace) {
-    words = stringToTokenize.split(/(\s+)/);
+    words = stringToTokenize.split(/(\s+)|(\/)/);
   } else {
-    words = stringToTokenize.split(/\s+/);
+    words = stringToTokenize.split(/\s+|\//);
   }
 
   for (const wrd of words) {

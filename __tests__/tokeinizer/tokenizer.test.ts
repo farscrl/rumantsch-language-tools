@@ -3,6 +3,9 @@ import { tokenize } from "../../src/tokenizer";
 test('basic tokenizer', () => {
     expect(tokenize('In test dal tokenizer.'))
         .toStrictEqual(['In', 'test', 'dal', 'tokenizer']);
+
+    expect(tokenize('Domat/Ems'))
+        .toStrictEqual(['Domat', 'Ems']);
 });
 
 test('extract abbreviations', () => {

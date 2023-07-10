@@ -119,11 +119,6 @@ export class Proofreader {
   }
 
   public containsElementToIgnore(text: string): boolean {
-    // check if url
-    if (/^(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])$/gi.test(text)) {
-      return true;
-    }
-
     // check if email
     if (
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g.test(

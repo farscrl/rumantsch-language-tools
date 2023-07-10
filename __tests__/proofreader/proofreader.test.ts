@@ -17,8 +17,7 @@ test('basic spellchecking surmiran', async () => {
     expect(await surmiran.proofreadText('in')).toEqual([{'length': 2, 'offset': 0, 'word': 'in'}]);
     expect(await surmiran.proofreadText('sin')).toEqual([{'length': 3, 'offset': 0, 'word': 'sin'}]);
 
-    // urls / email
-    expect(await surmiran.proofreadText('https://www.paginadasurmeir.ch')).toEqual([]);
+    // email
     expect(await surmiran.proofreadText('info@paginadasurmeir.ch')).toEqual([]);
 
     // soft hyphen, zero-width space
