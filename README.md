@@ -3,7 +3,7 @@
 Welcome to the Rumantsch Language Tools repository! This collection of tools is designed to aid in working with the Rumantsch (Romansh) language. Currently, it includes:
 
 * Tokenizer: A tool for breaking down text into individual tokens (based on [stdlib-js/nlp-tokenize]( https://github.com/stdlib-js/nlp-tokenize/blob/main/lib/main.js))
-* Spellchecking: Utilizing hunspell for accurate and correct spelling. Currently, it supports `rm-surmiran` with more idioms coming soon. The dictionary files are loaded from an [external host](https://www.spellchecker.pledarigrond.ch).
+* Spellchecking: Utilizing hunspell for accurate and correct spelling. Currently, it supports all idioms and Rumantsch Grischun (except `rm-sursilv`, coming soon). The dictionary files are loaded from an [external host](https://www.spellchecker.pledarigrond.ch).
 
 Feel free to explore and utilize these tools for your Rumantsch language-related projects.
 Happy linguistic exploration!
