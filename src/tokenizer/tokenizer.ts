@@ -80,12 +80,227 @@ const EMOJI_LIST: any = {
 };
 
 const ABBREVIATION_LIST: any = {
-  'p.pl.': ['p.pl.'],
-  'P.pl.': ['P.pl.'],
   'p.ex.': ['p.ex.'],
   'P.ex.': ['P.ex.'],
+
+  'sigr.': ['sigr.'],
+  'Sigr.': ['Sigr.'],
+
+  'dna.': ['dna.'],
+  'Dna.': ['Dna.'],
+
+  'ca.': ['ca.'],
+  'Ca.': ['Ca.'],
+
+  'za.': ['za.'],
+  'Za.': ['Za.'],
+
+  'etc.': ['etc.'],
+  'Etc.': ['Etc.'],
+
+  'resp.': ['resp.'],
+  'Resp.': ['Resp.'],
+
+  'ev.': ['ev.'],
+  'Ev.': ['Ev.'],
+
+  't.a.': ['t.a.'],
+  'T.a.': ['T.a.'],
+
+  'd.a.': ['d.a.'],
+  'D.a.': ['D.a.'],
+
+  't.o.': ['t.o.'],
+  'T.o.': ['T.o.'],
+
+  'q.v.d.': ['q.v.d.'],
+  'Q.v.d.': ['Q.v.d.'],
+
+  'q.v.g.': ['q.v.g.'],
+  'Q.v.g.': ['Q.v.g.'],
+
+  'c.v.d.': ['c.v.d.'],
+  'C.v.d.': ['C.v.d.'],
+
+  'qvd.': ['qvd.'],
+  'Qvd.': ['Qvd.'],
+
+  'qvg.': ['qvg.'],
+  'Qvg.': ['Qvg.'],
+
+  'cvd.': ['cvd.'],
+  'Cvd.': ['Cvd.'],
+
   'e.u.v.': ['e.u.v.'],
   'E.u.v.': ['E.u.v.'],
+
+  'e.a.v.': ['e.a.v.'],
+  'E.a.v.': ['E.a.v.'],
+
+  'a.a.a.': ['a.a.a.'],
+  'A.a.a.': ['A.a.a.'],
+
+  'e.u.a.': ['e.u.a.'],
+  'E.u.a.': ['E.u.a.'],
+
+  'e.u.i.': ['e.u.i.'],
+  'E.u.i.': ['E.u.i.'],
+
+  'euv.': ['euv.'],
+  'Euv.': ['Euv.'],
+
+  'eav.': ['eav.'],
+  'Eav.': ['Eav.'],
+
+  'aaa.': ['aaa.'],
+  'Aaa.': ['Aaa.'],
+
+  'eua.': ['eua.'],
+  'Eua.': ['Eua.'],
+
+  'eui.': ['eui.'],
+  'Eui.': ['Eui.'],
+
+  'e.o.pl.': ['e.o.pl.'],
+  'E.o.pl.': ['E.o.pl.'],
+
+  'e.o.p.': ['e.o.p.'],
+  'E.o.p.': ['E.o.p.'],
+
+  'eopl.': ['eopl.'],
+  'Eopl.': ['Eopl.'],
+
+  'eop.': ['eop.'],
+  'Eop.': ['Eop.'],
+
+  'rum.': ['rum.'],
+  'Rum.': ['Rum.'],
+
+  'rom.': ['rom.'],
+  'Rom.': ['Rom.'],
+
+  'tud.': ['tud.'],
+  'Tud.': ['Tud.'],
+
+  'tal.': ['tal.'],
+  'Tal.': ['Tal.'],
+
+  'fr.': ['fr.'],
+  'Fr.': ['Fr.'],
+
+  'engl.': ['engl.'],
+  'Engl.': ['Engl.'],
+
+  'angl.': ['angl.'],
+  'Angl.': ['Angl.'],
+
+  'ingl.': ['ingl.'],
+  'Ingl.': ['Ingl.'],
+
+  'lat.': ['lat.'],
+  'Lat.': ['Lat.'],
+
+  'spagn.': ['spagn.'],
+  'Spagn.': ['Spagn.'],
+
+  'port.': ['port.'],
+  'Port.': ['Port.'],
+
+  'surs.': ['surs.'],
+  'Surs.': ['Surs.'],
+
+  'suts.': ['suts.'],
+  'Suts.': ['Suts.'],
+
+  'surm.': ['surm.'],
+  'Surm.': ['Surm.'],
+
+  'put.': ['put.'],
+  'Put.': ['Put.'],
+
+  'vall.': ['vall.'],
+  'Vall.': ['Vall.'],
+
+  'lad.': ['lad.'],
+  'Lad.': ['Lad.'],
+
+  'p.': ['p.'],
+  'P.': ['P.'],
+
+  'al.': ['al.'],
+  'Al.': ['Al.'],
+
+  'v.': ['v.'],
+  'V.': ['V.'],
+
+  'vol.': ['vol.'],
+  'Vol.': ['Vol.'],
+
+  'cf.': ['cf.'],
+  'Cf.': ['Cf.'],
+
+  'a.Cr.': ['a.Cr.'],
+  'A.Cr.': ['A.Cr.'],
+
+  's.Cr.': ['s.Cr.'],
+  'S.Cr.': ['S.Cr.'],
+
+  'd.Cr.': ['d.Cr.'],
+  'D.Cr.': ['D.Cr.'],
+
+  'z.Cr.': ['z.Cr.'],
+  'Z.Cr.': ['Z.Cr.'],
+
+  's.': ['s.'],
+  'S.': ['S.'],
+
+  'ss.': ['ss.'],
+  'Ss.': ['Ss.'],
+
+  'km/h': ['km/h'],
+
+  'm/s': ['m/s'],
+
+  'm s.m.': ['m s.m.'],
+
+  'nr.': ['nr.'],
+  'Nr.': ['Nr.'],
+
+  'dr.': ['dr.'],
+  'Dr.': ['Dr.'],
+
+  'prof.': ['prof.'],
+  'Prof.': ['Prof.'],
+
+  'em.': ['em.'],
+  'Em.': ['Em.'],
+
+  'excl.': ['excl.'],
+  'Excl.': ['Excl.'],
+
+  'incl.': ['incl.'],
+  'Incl.': ['Incl.'],
+
+  'do.': ['do.'],
+  'Do.': ['Do.'],
+
+  'p.pl.': ['p.pl.'],
+  'P.pl.': ['P.pl.'],
+
+  'chf': ['chf'],
+  'CHF': ['CHF'],
+
+  // 'fr.': ['fr.'], // equal to franzos
+  // 'Fr.': ['Fr.'],
+
+  'frs.': ['frs.'],
+  'Frs.': ['Frs.'],
+
+  'rp.': ['rp.'],
+  'Rp.': ['Rp.'],
+
+  'rps.': ['rps.'],
+  'Rps.': ['Rps.'],
 };
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
