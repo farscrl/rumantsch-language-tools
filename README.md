@@ -1,29 +1,76 @@
-# Rumantsch language tools
+# Rumantsch Language Tools
 
-Welcome to the Rumantsch Language Tools repository! This collection of tools is designed to aid in working with the Rumantsch (Romansh) language. Currently, it includes:
+A collection of tools for working with the Rumantsch (Romansh) language, published as an npm package.
 
-* Tokenizer: A tool for breaking down text into individual tokens (based on [stdlib-js/nlp-tokenize]( https://github.com/stdlib-js/nlp-tokenize/blob/main/lib/main.js))
-* Spellchecking: Utilizing hunspell for accurate and correct spelling. Currently, it supports all idioms and Rumantsch Grischun (except `rm-sursilv`, coming soon). The dictionary files are loaded from an [external host](https://www.spellchecker.pledarigrond.ch).
+## Installation
 
-Feel free to explore and utilize these tools for your Rumantsch language-related projects.
-Happy linguistic exploration!
+```bash
+pnpm add @farscrl/rumantsch-language-tools
+```
+
+## Features
+
+- **Tokenizer** — splits text into individual tokens, handling Romansh-specific abbreviations and punctuation (based on [stdlib-js/nlp-tokenize](https://github.com/stdlib-js/nlp-tokenize/blob/main/lib/main.js))
+- **Proofreader** — hunspell-based spellchecker supporting all Romansh idioms
+
+### Supported idioms
+
+| Code | Idiom |
+|------|-------|
+| `rm-puter` | Puter |
+| `rm-rumgr` | Rumantsch Grischun |
+| `rm-surmiran` | Surmiran |
+| `rm-sursilv` | Sursilvan |
+| `rm-sutsilv` | Sutsilvan |
+| `rm-vallader` | Vallader |
 
 ## Usage
+
 ### Tokenizer
 
-    import { Tokenizer } from "@farscrl/rumantsch-language-tools";
-    Tokenizer.tokenize('In test dal tokenizer.')
+```ts
+import { Tokenizer } from "@farscrl/rumantsch-language-tools";
+
+Tokenizer.tokenize('In test dal tokenizer.');
+// ['In', 'test', 'dal', 'tokenizer']
+```
 
 ### Proofreader
 
-    import { Proofreader } from '@farscrl/rumantsch-language-tools';
-    const surmiran = await Proofreader.CreateProofreader('rm-surmiran');
-    await surmiran.proofreadText('Text correct'); // returns []
-    await surmiran.proofreadText('in'); // returns [{'length': 2, 'offset': 0, 'word': 'in'}]
+```ts
+import { Proofreader } from '@farscrl/rumantsch-language-tools';
 
-By default the dictionary files are fetched from `https://www.spellchecker.pledarigrond.ch`. If you self-host them, pass a custom base URL as an option:
+const proofreader = await Proofreader.CreateProofreader('rm-surmiran');
 
-    const surmiran = await Proofreader.CreateProofreader('rm-surmiran', { baseUrl: 'https://your-host.example.com' });
+await proofreader.proofreadText('Text correct');
+// [] — no errors
 
-## Tests
-Tests are based on Jest. To execute them, run `pnpm test`.
+await proofreader.proofreadText('in');
+// [{ word: 'in', offset: 0, length: 2 }]
+
+await proofreader.getSuggestions('corect');
+// ['correct', ...]
+```
+
+Dictionary files are fetched from `https://www.spellchecker.pledarigrond.ch` by default. To use a self-hosted mirror, pass a `baseUrl` option:
+
+```ts
+const proofreader = await Proofreader.CreateProofreader('rm-surmiran', {
+  baseUrl: 'https://your-host.example.com'
+});
+```
+
+Call `unload()` when you are done to free the dictionary from memory:
+
+```ts
+proofreader.unload();
+```
+
+## Development
+
+```bash
+pnpm install      # install dependencies
+pnpm test         # run tests
+pnpm run build    # compile to lib/
+pnpm run lint     # lint
+```
