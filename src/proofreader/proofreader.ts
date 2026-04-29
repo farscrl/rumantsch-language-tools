@@ -17,7 +17,7 @@ export class Proofreader {
 
   public static CreateProofreader = async (idiom: Idioms) => {
     const instance = new Proofreader(idiom);
-    await instance.setup();
+    await instance.loadDictionary(idiom);
     instance.isLoaded = true;
     return instance;
   };
@@ -53,10 +53,6 @@ export class Proofreader {
     }
   }
 
-  private async setup(): Promise<void> {
-    return await this.loadDictionary(this.idiom);
-  }
-
   private async loadDictionary(langCode: Idioms) {
     this.hunspellFactory = await loadModule();
 
@@ -69,10 +65,6 @@ export class Proofreader {
     this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, `${langCode}.dic`);
 
     this.hunspell = this.hunspellFactory.create(this.affFile, this.dictFile);
-    await this.onDictLoaded(langCode);
-  }
-
-  private async onDictLoaded(langCode: string) {
     await this.loadVersion(langCode);
     // console.log('loading spellchecker finished: ' + langCode);
   }
