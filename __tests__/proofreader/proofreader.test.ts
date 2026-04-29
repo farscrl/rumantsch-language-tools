@@ -1,7 +1,40 @@
+import * as http from 'http';
+import * as fs from 'fs';
+import * as path from 'path';
 import { Proofreader } from "../../src/proofreader";
 
+const FIXTURES_DIR = path.join(__dirname, '../fixtures');
+
+let server: http.Server;
+let baseUrl: string;
+
+beforeAll(async () => {
+    server = http.createServer((req, res) => {
+        const filePath = path.join(FIXTURES_DIR, req.url ?? '');
+        fs.readFile(filePath, (err, data) => {
+            if (err) {
+                res.writeHead(404);
+                res.end('Not found');
+            } else {
+                res.writeHead(200);
+                res.end(data);
+            }
+        });
+    });
+
+    await new Promise<void>((resolve) => server.listen(0, resolve));
+    const address = server.address() as { port: number };
+    baseUrl = `http://localhost:${address.port}`;
+});
+
+afterAll(async () => {
+    await new Promise<void>((resolve, reject) =>
+        server.close((err) => (err ? reject(err) : resolve()))
+    );
+});
+
 test('basic spellchecking surmiran', async () => {
-    const surmiran = await Proofreader.CreateProofreader('rm-surmiran');
+    const surmiran = await Proofreader.CreateProofreader('rm-surmiran', { baseUrl });
 
     expect(surmiran.version).not.toBe('');
 
@@ -29,7 +62,7 @@ test('basic spellchecking surmiran', async () => {
 });
 
 test('get suggestions surmiran', async () => {
-    const surmiran = await Proofreader.CreateProofreader('rm-surmiran');
+    const surmiran = await Proofreader.CreateProofreader('rm-surmiran', { baseUrl });
 
-    expect(await surmiran.getSuggestions('corect')).toEqual(['correct', 'rectorat', 'lectore', 'recorrer', 'recor',]);
+    expect(await surmiran.getSuggestions('corect')).toEqual(['correct', 'rectorat', 'lectore', 'recorrer', 'recor']);
 });
