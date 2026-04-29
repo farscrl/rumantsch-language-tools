@@ -22,4 +22,4 @@ Happy linguistic exploration!
     await surmiran.proofreadText('in'); // returns [{'length': 2, 'offset': 0, 'word': 'in'}]
 
 ## Tests
-Tests are based on vitest. To execute them, run `npm test`.
+Tests are based on Jest. To execute them, run `npm test`.
