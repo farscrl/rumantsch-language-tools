@@ -3,28 +3,34 @@ import { Idioms } from '../models/idioms';
 import { ITextWithPosition } from '../models/data-structures';
 import { Tokenizer } from '../index';
 
-const baseUrl = 'https://www.spellchecker.pledarigrond.ch';
+const DEFAULT_BASE_URL = 'https://www.spellchecker.pledarigrond.ch';
+
+export interface ProofreaderOptions {
+  baseUrl?: string;
+}
 
 export class Proofreader {
   isLoaded = false;
   version = '';
 
   private idiom: Idioms;
+  private baseUrl: string;
   private hunspellFactory?: HunspellFactory;
   private affFile?: string;
   private dictFile?: string;
   private hunspell?: Hunspell;
 
-  public static CreateProofreader = async (idiom: Idioms) => {
-    const instance = new Proofreader(idiom);
+  public static CreateProofreader = async (idiom: Idioms, options?: ProofreaderOptions) => {
+    const instance = new Proofreader(idiom, options);
     await instance.loadDictionary(idiom);
     instance.isLoaded = true;
     return instance;
   };
 
   // constructor is private, use the `CreateProofreader` static function instead to instantiate a proofreader.
-  private constructor(idiom: Idioms) {
+  private constructor(idiom: Idioms, options?: ProofreaderOptions) {
     this.idiom = idiom;
+    this.baseUrl = options?.baseUrl ?? DEFAULT_BASE_URL;
   }
 
   proofreadText(sentence: string): Promise<ITextWithPosition[]> {
@@ -63,11 +69,11 @@ export class Proofreader {
     try {
       this.hunspellFactory = await loadModule();
 
-      const aff = await fetch(`${baseUrl}/hunspell/${langCode}/${langCode}.aff`);
+      const aff = await fetch(`${this.baseUrl}/hunspell/${langCode}/${langCode}.aff`);
       const affBuffer = new Uint8Array(await aff.arrayBuffer());
       this.affFile = this.hunspellFactory.mountBuffer(affBuffer, `${langCode}.aff`);
 
-      const dic = await fetch(`${baseUrl}/hunspell/${langCode}/${langCode}.dic`);
+      const dic = await fetch(`${this.baseUrl}/hunspell/${langCode}/${langCode}.dic`);
       const dicBuffer = new Uint8Array(await dic.arrayBuffer());
       this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, `${langCode}.dic`);
 
@@ -80,7 +86,7 @@ export class Proofreader {
   }
 
   private async loadVersion(langCode: string) {
-    const version = await fetch(`${baseUrl}/hunspell/${langCode}/${langCode}_version.txt`);
+    const version = await fetch(`${this.baseUrl}/hunspell/${langCode}/${langCode}_version.txt`);
     this.version = await version.text();
   }
 

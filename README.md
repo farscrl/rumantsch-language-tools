@@ -21,5 +21,9 @@ Happy linguistic exploration!
     await surmiran.proofreadText('Text correct'); // returns []
     await surmiran.proofreadText('in'); // returns [{'length': 2, 'offset': 0, 'word': 'in'}]
 
+By default the dictionary files are fetched from `https://www.spellchecker.pledarigrond.ch`. If you self-host them, pass a custom base URL as an option:
+
+    const surmiran = await Proofreader.CreateProofreader('rm-surmiran', { baseUrl: 'https://your-host.example.com' });
+
 ## Tests
 Tests are based on Jest. To execute them, run `npm test`.
