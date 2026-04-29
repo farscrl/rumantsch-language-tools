@@ -1,6 +1,7 @@
 {
   "name": "@farscrl/rumantsch-language-tools",
   "version": "1.0.4",
+  "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184",
   "description": "A collection of tools is designed to aid in working with the Rumantsch (Romansh) language",
   "author": "far ScRL",
   "license": "MIT",
@@ -12,10 +13,10 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint src",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
+    "prepare": "pnpm run build",
+    "prepublishOnly": "pnpm test && pnpm run lint",
+    "preversion": "pnpm run lint",
+    "version": "pnpm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
   "keywords": [

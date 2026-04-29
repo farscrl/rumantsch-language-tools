@@ -26,4 +26,4 @@ By default the dictionary files are fetched from `https://www.spellchecker.pleda
     const surmiran = await Proofreader.CreateProofreader('rm-surmiran', { baseUrl: 'https://your-host.example.com' });
 
 ## Tests
-Tests are based on Jest. To execute them, run `npm test`.
+Tests are based on Jest. To execute them, run `pnpm test`.
