@@ -28,6 +28,9 @@ export class Proofreader {
   }
 
   proofreadText(sentence: string): Promise<ITextWithPosition[]> {
+    if (!this.isLoaded || !this.hunspell) {
+      throw new Error('Proofreader is not loaded. Call CreateProofreader() and await it before use.');
+    }
     const tokens = this.tokenizeString(sentence);
     const errors: ITextWithPosition[] = [];
 
@@ -41,7 +44,10 @@ export class Proofreader {
   }
 
   getSuggestions(word: string): Promise<string[]> {
-    return Promise.resolve(this.hunspell!.suggest(this.removeSpecialChars(word)));
+    if (!this.isLoaded || !this.hunspell) {
+      throw new Error('Proofreader is not loaded. Call CreateProofreader() and await it before use.');
+    }
+    return Promise.resolve(this.hunspell.suggest(this.removeSpecialChars(word)));
   }
 
   unload(): void {
@@ -54,19 +60,23 @@ export class Proofreader {
   }
 
   private async loadDictionary(langCode: Idioms) {
-    this.hunspellFactory = await loadModule();
+    try {
+      this.hunspellFactory = await loadModule();
 
-    const aff = await fetch(`${baseUrl}/hunspell/${langCode}/${langCode}.aff`);
-    const affBuffer = new Uint8Array(await aff.arrayBuffer());
-    this.affFile = this.hunspellFactory.mountBuffer(affBuffer, `${langCode}.aff`);
+      const aff = await fetch(`${baseUrl}/hunspell/${langCode}/${langCode}.aff`);
+      const affBuffer = new Uint8Array(await aff.arrayBuffer());
+      this.affFile = this.hunspellFactory.mountBuffer(affBuffer, `${langCode}.aff`);
 
-    const dic = await fetch(`${baseUrl}/hunspell/${langCode}/${langCode}.dic`);
-    const dicBuffer = new Uint8Array(await dic.arrayBuffer());
-    this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, `${langCode}.dic`);
+      const dic = await fetch(`${baseUrl}/hunspell/${langCode}/${langCode}.dic`);
+      const dicBuffer = new Uint8Array(await dic.arrayBuffer());
+      this.dictFile = this.hunspellFactory.mountBuffer(dicBuffer, `${langCode}.dic`);
 
-    this.hunspell = this.hunspellFactory.create(this.affFile, this.dictFile);
-    await this.loadVersion(langCode);
+      this.hunspell = this.hunspellFactory.create(this.affFile, this.dictFile);
+      await this.loadVersion(langCode);
     // console.log('loading spellchecker finished: ' + langCode);
+    } catch (e) {
+      throw new Error(`Failed to load dictionary for ${langCode}: ${e instanceof Error ? e.message : e}`);
+    }
   }
 
   private async loadVersion(langCode: string) {
