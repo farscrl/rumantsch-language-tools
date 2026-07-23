@@ -1,4 +1,4 @@
-import { Hunspell, HunspellFactory, loadModule } from 'hunspell-asm';
+import { HunspellFactory, HunspellInstance, loadModule } from '@farscrl/hunspell-wasm';
 import { Idioms } from '../models/idioms';
 import { ITextWithPosition } from '../models/data-structures';
 import { Tokenizer } from '../index';
@@ -18,7 +18,7 @@ export class Proofreader {
   private hunspellFactory?: HunspellFactory;
   private affFile?: string;
   private dictFile?: string;
-  private hunspell?: Hunspell;
+  private hunspell?: HunspellInstance;
 
   public static CreateProofreader = async (idiom: Idioms, options?: ProofreaderOptions) => {
     const instance = new Proofreader(idiom, options);

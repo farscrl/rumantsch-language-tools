@@ -17,7 +17,7 @@
     }
   },
   "scripts": {
-    "test": "jest --config jestconfig.json",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jestconfig.json",
     "build": "tsup",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint src",
@@ -49,7 +49,7 @@
     "typescript-eslint": "^8.59.1"
   },
   "dependencies": {
-    "hunspell-asm": "^4.0.2"
+    "@farscrl/hunspell-wasm": "^1.0.0"
   },
   "files": [
     "lib/**/*"

@@ -64,5 +64,5 @@ test('basic spellchecking surmiran', async () => {
 test('get suggestions surmiran', async () => {
     const surmiran = await Proofreader.CreateProofreader('rm-surmiran', { baseUrl });
 
-    expect(await surmiran.getSuggestions('corect')).toEqual(['correct', 'rectorat', 'lectore', 'recorrer', 'recor']);
+    expect(await surmiran.getSuggestions('corect')).toEqual(['correct', 'rectorat', 'lectore', 'recorrer', 'recorr']);
 });
