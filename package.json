@@ -49,7 +49,7 @@
     "typescript-eslint": "^8.65.0"
   },
   "dependencies": {
-    "@farscrl/hunspell-wasm": "^1.0.0"
+    "@farscrl/hunspell-wasm": "^1.0.1"
   },
   "files": [
     "lib/**/*"

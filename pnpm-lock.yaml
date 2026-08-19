@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@farscrl/hunspell-wasm':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
     devDependencies:
       '@types/jest':
         specifier: ^30.0.0
@@ -408,8 +408,8 @@ packages:
     resolution: {integrity: sha512-+CNAzxglkrpNf/kKywqQfk74QjtceuOE7Qm+AF8miRvPF/wmmK5+OJOgVh3AVTT3RP2mH3+FOaxlE5v72owk0A==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
-  '@farscrl/hunspell-wasm@1.0.0':
-    resolution: {integrity: sha512-hQFwu0m6UuCdGPGbBB14gd7j4G65AeJV6D+fTPhagubOFTWZRi7i0zWrgOB9kW12SfiXmv6bktFLa8SxfNA0kw==}
+  '@farscrl/hunspell-wasm@1.0.1':
+    resolution: {integrity: sha512-tLhy/UvXTDqbHx+F/9+L48USQK7qyujxlUd0LuASLmxRS7r1lGaud9tSeq9nJT9oaFl9PAgORFuJh8OSwiT1fw==}
     engines: {node: '>=24'}
 
   '@humanfs/core@0.19.2':
@@ -2425,7 +2425,7 @@ snapshots:
       '@eslint/core': 1.2.1
       levn: 0.4.1
 
-  '@farscrl/hunspell-wasm@1.0.0': {}
+  '@farscrl/hunspell-wasm@1.0.1': {}
 
   '@humanfs/core@0.19.2':
     dependencies:
