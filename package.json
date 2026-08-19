@@ -37,16 +37,16 @@
   ],
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.65.0",
-    "@typescript-eslint/parser": "^8.65.0",
-    "eslint": "^10.7.0",
+    "@typescript-eslint/eslint-plugin": "^8.67.0",
+    "@typescript-eslint/parser": "^8.67.0",
+    "eslint": "^10.8.1",
     "eslint-config-prettier": "^10.1.8",
     "jest": "^30.4.2",
     "prettier": "^3.9.6",
     "ts-jest": "^29.4.12",
     "tsup": "^8.5.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.65.0"
+    "typescript-eslint": "^8.67.0"
   },
   "dependencies": {
     "@farscrl/hunspell-wasm": "^1.0.1"
