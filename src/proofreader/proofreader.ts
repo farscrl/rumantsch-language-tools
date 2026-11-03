@@ -57,11 +57,16 @@ export class Proofreader {
   }
 
   unload(): void {
+    this.isLoaded = false;
+    this.hunspell?.dispose();
+    this.hunspell = undefined;
     if (this.affFile) {
       this.hunspellFactory?.unmount(this.affFile);
+      this.affFile = undefined;
     }
     if (this.dictFile) {
       this.hunspellFactory?.unmount(this.dictFile);
+      this.dictFile = undefined;
     }
   }
 
