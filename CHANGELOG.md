@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 1.1.3 - 2026-11-03
+
+### Fixed
+
+- `Tokenizer.tokenize()` no longer throws a `TypeError` when called with `keepWhitespace = true`
+  (broken since 1.0.1).
+- `Proofreader.unload()` now disposes the Hunspell instance and marks the proofreader as unloaded,
+  so `proofreadText()` and `getSuggestions()` throw as documented when called afterwards.
+
 ## 1.1.2 - 2026-08-19
 
 ### Fixed
