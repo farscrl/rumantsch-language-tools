@@ -113,3 +113,14 @@ test('strip special characters at the end', () => {
 test('strip multiple special characters at the beginning and end', () => {
     expect(tokenize('!.%&/test#,/%*,')).toStrictEqual(['test']);
 });
+
+test('keep whitespace', () => {
+    expect(tokenize('In test  dal tokenizer.', false, true))
+        .toStrictEqual(['In', ' ', 'test', '  ', 'dal', ' ', 'tokenizer']);
+
+    expect(tokenize('Domat/Ems e Cuira', false, true))
+        .toStrictEqual(['Domat', 'Ems', ' ', 'e', ' ', 'Cuira']);
+
+    expect(tokenize('Domat/Ems e Cuira.', true, true))
+        .toStrictEqual(['Domat', '/', 'Ems', ' ', 'e', ' ', 'Cuira', '.']);
+});

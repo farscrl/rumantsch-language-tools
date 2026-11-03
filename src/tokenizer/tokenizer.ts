@@ -127,7 +127,8 @@ function tokenize(stringToTokenize: string, keepPunctuation = false, keepWhitesp
   }
 
   if (keepWhitespace) {
-    words = stringToTokenize.split(/(\s+)|(\/)/);
+    // single capture group: with two groups, split() yields `undefined` for the non-matching one
+    words = stringToTokenize.split(/(\s+|\/)/);
   } else {
     words = stringToTokenize.split(/\s+|\//);
   }
